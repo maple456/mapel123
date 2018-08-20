@@ -9,7 +9,7 @@ const config = require('./config');
 const { Message, OpType, Location } = require('../curve-thrift/line_types');
 //let exec = require('child_process').exec;
 
-const myBot = ['uec6d62c3e4a61f033332bc1d86133e49','u88551cb4b9ab9508138d5d35da962c9c'];
+const myBot = ['uec6d62c3e4a61f033332bc1d86133e49','ud9964664052659ba468d55de6df025be'];
 const banList = [];//Banned list
 var groupList = new Array();//Group list
 var vx = {};var midnornama,pesane,kickhim;var waitMsg = "no";//DO NOT CHANGE THIS
@@ -1537,7 +1537,7 @@ Link Download: "+idU.id+"\n";
 			if(vx[2]=="arg1"){
 			let M = new Message();
 			let listGroups = await this._client.getGroupIdsJoined();
-			let xtxt = "「 Group List 」\n\n";
+			let xtxt = "《 群組列表 》\n\n";
 			switch(txt){
 				case 'list':
 				    vx[0] = "";vx[1] = "";waitMsg = "no";vx[2] = "";vx[3] = "";groupList = [];
@@ -1557,7 +1557,7 @@ Link Download: "+idU.id+"\n";
 				break;
 				case 'ticket':
 				    vx[2] = "arg2";vx[3] = "ticket";M.to = seq.to;groupList = [];
-					M.text = "Pilih nomor group dibawah ini !";
+					M.text = "請選擇以下的群組！";
 					await this._client.sendMessage(0, M);
 					listGroups.forEach(function(item, index, array) {
 					  groupList.push(item);
@@ -1574,7 +1574,7 @@ Link Download: "+idU.id+"\n";
 				break;
 				default:
 				 vx[0] = "";vx[1] = "";waitMsg = "no";vx[2] = "";vx[3] = "";
-				 this._sendMessage(seq,"#CANCELLED");
+				 this._sendMessage(seq,"#取消");
 			}}else if(vx[2] == "arg2" && vx[3] == "ticket"){
 				vx[0] = "";vx[1] = "";waitMsg = "no";vx[2] = "";vx[3] = "";
 				if(typeof groupList[txt - 1] !== 'undefined') {
@@ -1584,21 +1584,21 @@ Link Download: "+idU.id+"\n";
 					   await this._updateGroup(updateGroup);
 					}
 					const groupUrl = await this._reissueGroupTicket(groupList[txt - 1]);
-					this._sendMessage(seq,"Line Group -> line://ti/g/"+groupUrl);
-				}else{this._sendMessage(seq,"Group tidak ada !");}
+					this._sendMessage(seq,"群組 -> line://ti/g/"+groupUrl);
+				}else{this._sendMessage(seq,"群組不存在!");}
 			}
 		}
 		if(txt == "!grouputil" && isAdminOrBot(seq.from_)){
 			if(vx[2] == null || typeof vx[2] === "undefined" || !vx[2]){
 				waitMsg = "yes";
 			    vx[0] = seq.from_;vx[1] = txt;
-			    this._sendMessage(seq,"「 Group Utility 」\n- Grouplist = list\n- Group Ticket = ticket\n");
+			    this._sendMessage(seq,"《 群組列表 》\n- Grouplist = list\n- Group Ticket = ticket\n");
 				vx[2] = "arg1";
 			}else{
 				waitMsg = "no";vx[0] = "";vx[1] = "";vx[2] = "";vx[3] = "";
-				this._sendMessage(seq,"#CANCELLED");
+				this._sendMessage(seq,"#取消");
 			}
-		}else if(txt == "!grouputil" && !isAdminOrBot(seq.from_)){this._sendMessage(seq,"Not permitted !");}
+		}else if(txt == "!grouputil" && !isAdminOrBot(seq.from_)){this._sendMessage(seq,"不允許 !");}
 		
 		if(cox[0] == "broadcast" && isAdminOrBot(seq.from_) && cox[1]){
             let listMID = [];
@@ -1616,18 +1616,18 @@ Link Download: "+idU.id+"\n";
                     this._client.sendMessage(0, bcm);
 	        	}
             }
-        }else if(cox[0] == "broadcast" && isAdminOrBot(seq.from_) && !cox[1]){this._sendMessage(seq,"# How to broadcast:\nbroadcast yourtexthere");}else if(cox[0] == "broadcast" && !isAdminOrBot(seq.from_)){this._sendMessage(seq,"Not permitted!");}
+        }else if(cox[0] == "broadcast" && isAdminOrBot(seq.from_) && !cox[1]){this._sendMessage(seq,"． 如何使用:\nbroadcast 文字");}else if(cox[0] == "broadcast" && !isAdminOrBot(seq.from_)){this._sendMessage(seq,"不允許!");}
 		
 		if(txt == "!kickme" && seq.toType == 2 && !isBanned(banList, seq.from_) && this.stateStatus.kick == 1){
-			this._sendMessage(seq,"Ok bang !");
+			this._sendMessage(seq,"好吧！");
 			this._kickMember(seq.to,[seq.from_]);
-		}else if(txt == '!kickme' && isBanned(banList, seq.from_)){this._sendMessage(seq,"Not permitted !");}
+		}else if(txt == '!kickme' && isBanned(banList, seq.from_)){this._sendMessage(seq,"不允許！");}
 		
 		
 		if(txt == "!refresh" && isAdminOrBot(seq.from_)){
-			this._sendMessage(seq, "Clean all message....");
+			this._sendMessage(seq, "清理全部消息...");
 			await this._client.removeAllMessages();
-			this._sendMessage(seq, "Done !");
+			this._sendMessage(seq, "完成!");
 		}
 		
         const sp = ['!speed','sp','speed','resp','respon'];
@@ -1636,16 +1636,18 @@ Link Download: "+idU.id+"\n";
 			await this._client.sendMessage(0,M);
 			const rtime = (Date.now() / 1000);
             const xtime = rtime	- curTime;
-            this._sendMessage(seq, xtime+' second');
-        }else if(sp.includes(txt) && isBanned(banList, seq.from_)){this._sendMessage(seq,"Not permitted !");}
+	this._sendMessage(seq, "測速中...");
+            this._sendMessage(seq, xtime+' 秒');
+        }else if(sp.includes(txt) && isBanned(banList, seq.from_)){this._sendMessage(seq,"不允許！");}
 		
         if(txt == '!speed' && !isBanned(banList, seq.from_)) {
 			const curTime = Math.floor(Date.now() / 1000);let M = new Message();M.to=seq.to;M.text = '';M.contentType = 1;M.contentPreview = null;M.contentMetadata = null;
 			await this._client.sendMessage(0,M);
 			const rtime = Math.floor(Date.now() / 1000);
             const xtime = rtime	- curTime;
-            this._sendMessage(seq, xtime+' second');
-        }else if(txt == '!speed' && isBanned(banList, seq.from_)){this._sendMessage(seq,"Not permitted !");}
+	this._sendMessage(seq, "測速中...");
+            this._sendMessage(seq, xtime+' 秒');
+        }else if(txt == '!speed' && isBanned(banList, seq.from_)){this._sendMessage(seq,"不允許！");}
 
         /*if(txt === 'kernel') {
             exec('uname -a;ptime;id;whoami',(err, sto) => {
@@ -1660,18 +1662,18 @@ Link Download: "+idU.id+"\n";
                     this._kickMember(seq.to,[listMember[i].mid])
                 }
             }
-        }else if(txt === '!kickall' && !isAdminOrBot(seq.from_) && seq.toType == 2){this._sendMessage(seq,"Not permitted !");}
+        }else if(txt === '!kickall' && !isAdminOrBot(seq.from_) && seq.toType == 2){this._sendMessage(seq,"不允許 !");}
 		
 		if(txt == '!key') {
 			let botOwner = await this._client.getContacts([myBot[0]]);
             let { mid, displayName } = await this._client.getProfile();
 			let key2 = "\n\
-====================\n\
-| BotName   : "+displayName+"\n\
-| BotID     : \n["+mid+"]\n\
-| BotStatus : Working\n\
-| BotOwner  : "+botOwner[0].displayName+"\n\
-====================\n";
+╔═══════════════════\n\
+║． Bot名稱   : "+displayName+"\n\
+║． BotMID    : \n["+mid+"]\n\
+║． Bot狀態   : 運作中\n\
+║． BotOwner  : "+botOwner[0].displayName+"\n\
+════════════════════\n";
 			seq.text = key2 += this.keyhelp;
 			this._client.sendMessage(0, seq);
 		}
@@ -1744,13 +1746,13 @@ Link Download: "+idU.id+"\n";
         }
 
         if(txt == 'setpoint') {
-            this._sendMessage(seq, `Setpoint for check reader.`);
+            this._sendMessage(seq, `設置已讀點`);
             this.removeReaderByGroup(seq.to);
         }
 
         if(txt == 'clear') {
             this.checkReader = []
-            this._sendMessage(seq, `Remove all check reader on memory`);
+            this._sendMessage(seq, `刪除已讀點`);
         }  
 
         if(txt == 'recheck'){
@@ -1762,7 +1764,7 @@ Link Download: "+idU.id+"\n";
             this._client.sendMessage(0,seq);  
         }
 
-        if(txt == 'setpoint for check reader .') {
+        if(txt == 'setpoint for check reader') {
             this.searchReader(seq);
         }
 
@@ -1775,7 +1777,7 @@ Link Download: "+idU.id+"\n";
 			let settings = await this._client.getSettings();
 			let emailbot = settings.identityIdentifier;
 			let M = new Message();M.to = seq.to;
-			M.text = 'Bot Name: '+probot.displayName+'\nBot LINE_ID: line://ti/p/'+probot.userid+'\nBot CONTACT_TICKET: http://line.me/ti/p/'+settings.contactMyTicket+'\nBot Email: hidden for some reason ^_^';
+			M.text = 'Bot名稱: '+probot.displayName+'\nBot LINE ID: line://ti/p/'+probot.userid+'\nBot聯繫TICKET: http://line.me/ti/p/'+settings.contactMyTicket+'\nBot Email: 由於某種原因所以隱藏';
 			this._client.sendMessage(0,M);
 		}
 		
@@ -1797,7 +1799,7 @@ Link Download: "+idU.id+"\n";
 					  });
 		      }else{let aM = new Message();aM.to = seq.to;aM.text = "Gagal, ekstensi file tidak diperbolehkan !";this._client.sendMessage(0,aM);}
 		    });
-		}else if(cox[0] == "!getimage" && linktxt[1] && isBanned(banList,seq.from_)){this._sendMessage(seq,"Not permitted!");}else if(cox[0] == "!getimage" && !linktxt[1] && !isBanned(banList,seq.from_)){this._sendMessage(seq,"# How to !getimage:\ngetimage http://url.com/image.png");}
+		}else if(cox[0] == "!getimage" && linktxt[1] && isBanned(banList,seq.from_)){this._sendMessage(seq,"不允許!");}else if(cox[0] == "!getimage" && !linktxt[1] && !isBanned(banList,seq.from_)){this._sendMessage(seq,"． 如何用 !getimage:\ngetimage http://url.com/image.png");}
 		
 		if(cox[0] == "album" && isAdminOrBot(seq.from_)){
 			await this._createAlbum(seq.to,cox[1],this.config.chanToken);
@@ -1810,7 +1812,7 @@ Link Download: "+idU.id+"\n";
 					this._kickMember(seq.to,adaGk);
 				}
 			}
-		}else if(txt == "!kickban" && !isAdminOrBot(seq.from_)){this._sendMessage(seq,"Not permitted !");}
+		}else if(txt == "!kickban" && !isAdminOrBot(seq.from_)){this._sendMessage(seq,"不允許 !");}
 		
 		if(txt == "!setting"){
 			this.setState(seq,1)
@@ -1822,7 +1824,7 @@ Link Download: "+idU.id+"\n";
         }
 	
         if(txt == '!myid' /*|| txt == 'mid' || txt == 'id'*/) {
-            this._sendMessage(seq,"ID Kamu: "+seq.from_);
+            this._sendMessage(seq,"你的mid: "+seq.from_);
         }
 		
        /* if(txt == 'speedtest' && isAdminOrBot(seq.from)) {
@@ -1863,36 +1865,36 @@ Link Download: "+idU.id+"\n";
 			let bang = new Message();
 			bang.to = seq.to;
 			
-			bang.text = "# Group Name:\n"+gname+"\n\
-\n# Group ID:\n"+gid+"\n\
-\n# Group Creator:\n"+gcreator+"\n\
-\n# Group CreatedTime:\n"+createdTime+"\n\
-\n# Group Ticket:\n"+ticketg+"\n\
-\n# Member: "+memberCount+"\n\
-\n# Pending: "+pendingCount+"\n\
-\n# QR: "+gqr+"\n\
-\n# Group Cover:\nhttp://dl.profile.line.naver.jp/"+gcover;
+			bang.text = "． 群組名稱:\n"+gname+"\n\
+\n． 群組 ID:\n"+gid+"\n\
+\n． 創建者:\n"+gcreator+"\n\
+\n． 創建時間:\n"+createdTime+"\n\
+\n． Ticket:\n"+ticketg+"\n\
+\n． 成員: "+memberCount+"\n\
+\n． 邀請中: "+pendingCount+"\n\
+\n． QR: "+gqr+"\n\
+\n． 群組圖片:\nhttp://dl.profile.line.naver.jp/"+gcover;
             this._client.sendMessage(0,bang);
-        }else if(txt == '!ginfo' && isBanned(banList, seq.from_)){this._sendMessage(seq,"Not permitted !");}
+        }else if(txt == '!ginfo' && isBanned(banList, seq.from_)){this._sendMessage(seq,"不允許 !");}
 
         const joinByUrl = ['!gurl','!curl'];
         if(joinByUrl.includes(txt) && txt == "!gurl") {
-            this._sendMessage(seq,`Updating group ...`);
+            this._sendMessage(seq,`更改群組中...`);
             let updateGroup = await this._getGroup(seq.to);//console.info(updateGroup);
             if(updateGroup.preventJoinByTicket === true) {
                 updateGroup.preventJoinByTicket = false;
 				await this._updateGroup(updateGroup);
             }
 			const groupUrl = await this._reissueGroupTicket(seq.to)
-            this._sendMessage(seq,`Line group = line://ti/g/${groupUrl}`);
+            this._sendMessage(seq,`群組網址 = line://ti/g/${groupUrl}`);
         }else if(joinByUrl.includes(txt) && txt == "!curl") {
-            this._sendMessage(seq,`Updating group ...`);
+            this._sendMessage(seq,`更改群組中...`);
             let updateGroup = await this._getGroup(seq.to);//console.info(updateGroup);
             if(updateGroup.preventJoinByTicket === false) {
                 updateGroup.preventJoinByTicket = true;
 				await this._updateGroup(updateGroup);
-				seq.text = "Done !";
-            }else{seq.text = "Sudah ditutup !";}
+				seq.text = "完成 !";
+            }else{seq.text = "已經關閉了 !";}
             this._sendMessage(seq,seq.text);
         }
 		
