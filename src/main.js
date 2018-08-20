@@ -558,7 +558,7 @@ class LINE extends LineAPI {
 				let bang = new Message();
 				bang.to = seq.to;
 				if(vx[4] == "sudah"){
-					bang.text = "他已經進入了朋友名單，我不能再添加了！";
+					bang.text = "他已經進入了朋友名單，我不能再加了！";
 					this._client.sendMessage(0, bang);
 				}else{
 				    bang.text = "Ok bang !, Sudah ku add !";
@@ -579,7 +579,7 @@ class LINE extends LineAPI {
 				let bang = new Message();
 				bang.to = seq.to;
 				if(vx[4] == "sudah"){
-					bang.text = "他已經進入了朋友名單，我不能再添加了！";
+					bang.text = "他已經進入了朋友名單，我不能再加了！";
 					this._client.sendMessage(0, bang);
 				}else{
 				    bang.text = "好的!我已經加了！";
@@ -599,7 +599,7 @@ class LINE extends LineAPI {
 				let bang = new Message();
 				bang.to = seq.to;
 				if(vx[4] == "sudah"){
-					bang.text = "他已經進入了朋友名單，我不能再添加了";
+					bang.text = "他已經進入了朋友名單，我不能再加了";
 					this._client.sendMessage(0, bang);
 				}else{
 				    bang.text = "好的!我已經加了！";
@@ -609,7 +609,7 @@ class LINE extends LineAPI {
 			}else{
 				let bang = new Message();
 				bang.to = seq.to;
-				bang.text = "． 如何添加聯繫人\n-發送要添加人的友資\n-發送要添加的人mid\n-或標記要添加的人";
+				bang.text = "． 如何使用 !addcontact\n-發送要添加人的友資\n-發送要添加的人mid\n-或標記要添加的人";
 				this._client.sendMessage(0,bang);
 			}
 		}
@@ -628,7 +628,7 @@ class LINE extends LineAPI {
 			let panjang = txt.split("");
 			if(txt == "cancel"){
 				vx[0] = "";vx[1] = "";waitMsg = "no";vx[2] = "";vx[3] = "";
-				this._sendMessage(seq,"# CANCELLED");
+				this._sendMessage(seq,"#取消");
 			}else if(seq.contentType == 13){
 				vx[0] = "";vx[1] = "";waitMsg = "no";vx[2] = "";vx[3] = "";
 				let midnya = seq.contentMetadata.mid;
@@ -652,7 +652,7 @@ class LINE extends LineAPI {
 			}else{
 				let bang = new Message();
 				bang.to = seq.to;
-				bang.text = "# How to !cekid\nTag orangnya / kirim kontak yang mau di-cek idnya !";
+				bang.text = "# 如何使用 !eckid\n標記人或發送想要查看ID的友資！";
 				this._client.sendMessage(0,bang);
 			}
 		}
@@ -660,13 +660,13 @@ class LINE extends LineAPI {
 			if(vx[2] == null || typeof vx[2] === "undefined" || !vx[2]){
 			    waitMsg = "yes";
 			    vx[0] = seq.from_;vx[1] = txt;vx[2] = "arg1";
-			    this._sendMessage(seq,"Cek ID siapa bang ? #Kirim kontaknya");
-				this._sendMessage(seq,"Atau bisa juga @tag orangnya");
+			    this._sendMessage(seq,"查看誰的mid ? #發送友資");
+				this._sendMessage(seq,"或者可以標記");
 			}else{
 				waitMsg = "no";vx[0] = "";vx[1] = "";vx[2] = "";vx[3] = "";
-				this._sendMessage(seq,"#CANCELLED");
+				this._sendMessage(seq,"#取消");
 			}
-		}else if(txt == '!cekid' && isBanned(banList, seq.from_)){this._sendMessage(seq,"Not permitted !");}
+		}else if(txt == '!cekid' && isBanned(banList, seq.from_)){this._sendMessage(seq,"不允許!");}
 		
 		if(vx[1] == "!kepo" && seq.from_ == vx[0] && waitMsg == "yes"){
 			let panjang = txt.split("");
@@ -687,15 +687,15 @@ class LINE extends LineAPI {
 				}else{xvp='';}
 				let ress = timeline_post.result;
 				bang.text = 
-"\n#Nama: "+orangnya[0].displayName+"\n\
-\n#ID: \n"+orangnya[0].mid+"\n\
-\n#Profile Picture: \nhttp://dl.profile.line.naver.jp"+orangnya[0].picturePath+"\n\
-\n#Cover Picture: \nhttp://dl.profile.line-cdn.net/myhome/c/download.nhn?userid="+orangnya[0].mid+"&oid="+ress.homeInfo.objectId+"\n\
+"\n．名稱: "+orangnya[0].displayName+"\n\
+\n．MID: \n"+orangnya[0].mid+"\n\
+\n．頭貼: \nhttp://dl.profile.line.naver.jp"+orangnya[0].picturePath+"\n\
+\n．封面: \nhttp://dl.profile.line-cdn.net/myhome/c/download.nhn?userid="+orangnya[0].mid+"&oid="+ress.homeInfo.objectId+"\n\
 "+xvp+"\n\
-\n#Status: \n"+orangnya[0].statusMessage+"\n\
+\n．個簽: \n"+orangnya[0].statusMessage+"\n\
 \n\n\n \n\
 ====================\n\
-              #Kepo \n\
+              #資訊 \n\
 ====================";
 				this._client.sendMessage(0,bang);
 			}else if(cot[1]){
@@ -713,15 +713,15 @@ class LINE extends LineAPI {
 				}else{xvp='';}
 				let ress = timeline_post.result;
 				bang.text = 
-"\n#Nama: "+orangnya[0].displayName+"\n\
-\n#ID: \n"+orangnya[0].mid+"\n\
-\n#Profile Picture: \nhttp://dl.profile.line.naver.jp"+orangnya[0].picturePath+"\n\
-\n#Cover Picture: \nhttp://dl.profile.line-cdn.net/myhome/c/download.nhn?userid="+orangnya[0].mid+"&oid="+ress.homeInfo.objectId+"\n\
+"\n．名稱: "+orangnya[0].displayName+"\n\
+\n．MID: \n"+orangnya[0].mid+"\n\
+\n．頭貼: \nhttp://dl.profile.line.naver.jp"+orangnya[0].picturePath+"\n\
+\n．封面: \nhttp://dl.profile.line-cdn.net/myhome/c/download.nhn?userid="+orangnya[0].mid+"&oid="+ress.homeInfo.objectId+"\n\
 "+xvp+"\n\
-\n#Status: \n"+orangnya[0].statusMessage+"\n\
+\n．個簽: \n"+orangnya[0].statusMessage+"\n\
 \n\n\n \n\
 ====================\n\
-              #Kepo \n\
+              #資訊 \n\
 ====================";
 				this._client.sendMessage(0,bang);
 			}else if(vx[2] == "arg1" && panjang.length > 30 && panjang[0] == "u"){
@@ -733,22 +733,22 @@ class LINE extends LineAPI {
 				}else{xvp='';}
 				let ress = timeline_post.result;
 				seq.text = 
-"\n#Nama: "+orangnya[0].displayName+"\n\
-\n#ID: \n"+orangnya[0].mid+"\n\
-\n#Profile Picture: \nhttp://dl.profile.line.naver.jp"+orangnya[0].picturePath+"\n\
-\n#Cover Picture: \nhttp://dl.profile.line-cdn.net/myhome/c/download.nhn?userid="+orangnya[0].mid+"&oid="+ress.homeInfo.objectId+"\n\
+"\n．名稱: "+orangnya[0].displayName+"\n\
+\n．MID: \n"+orangnya[0].mid+"\n\
+\n．頭貼: \nhttp://dl.profile.line.naver.jp"+orangnya[0].picturePath+"\n\
+\n．封面: \nhttp://dl.profile.line-cdn.net/myhome/c/download.nhn?userid="+orangnya[0].mid+"&oid="+ress.homeInfo.objectId+"\n\
 "+xvp+"\n\
-\n#Status: \n"+orangnya[0].statusMessage+"\n\
+\n．個簽: \n"+orangnya[0].statusMessage+"\n\
 \n\n\n \n\
 ====================\n\
-              #Kepo \n\
+              #資訊 \n\
 ====================";
 vx[0] = "";vx[1] = "";waitMsg = "no";vx[2] = "";vx[3] = "";
 				this._sendMessage(seq,seq.text);
 			}else{
 				let bang = new Message();
 				bang.to = seq.to;
-				bang.text = "# How to !kepo\nTag orangnya / kirim kontak / kirim mid yang mau dikepoin !";
+				bang.text = "# 如何使用!Kepo\n標記/發送友資/發送MID！";
 				this._client.sendMessage(0,bang);
 			}
 		}
@@ -756,22 +756,22 @@ vx[0] = "";vx[1] = "";waitMsg = "no";vx[2] = "";vx[3] = "";
 			if(vx[2] == null || typeof vx[2] === "undefined" || !vx[2]){
 			    waitMsg = "yes";
 			    vx[0] = seq.from_;vx[1] = txt;vx[2] = "arg1";
-			    this._sendMessage(seq,"Kepo sama siapa bang ? #kirim midnya");
+			    this._sendMessage(seq,"查看誰 ? #發送MID");
 			}else{
 				waitMsg = "no";vx[0] = "";vx[1] = "";vx[2] = "";vx[3] = "";
-				this._sendMessage(seq,"#CANCELLED");
+				this._sendMessage(seq,"#取消");
 			}
-		}else if(txt == '!kepo' && isBanned(banList, seq.from_)){this._sendMessage(seq,"Not permitted !");}
+		}else if(txt == '!kepo' && isBanned(banList, seq.from_)){this._sendMessage(seq,"不允許 !");}
 		
 		if(vx[1] == "!msg" && seq.from_ == vx[0] && waitMsg == "yes"){
 			//vx[0] = "";vx[1] = "";waitMsg = "no";vx[2] = "";vx[3] = "";
 			let panjang = txt.split("");
 			if(txt == "cancel"){
 				vx[0] = "";vx[1] = "";waitMsg = "no";vx[2] = "";vx[3] = "";
-				this._sendMessage(seq,"#CANCELLED");
+				this._sendMessage(seq,"#取消");
 			}else if(vx[2] == "arg1" && vx[3] == "mid" && cot[1]){
 				let bang = new Message();bang.to = seq.to;
-				bang.text = "OK !, btw pesan-nya apa ?"
+				bang.text = "好的，消息是什麼？"
 				this._client.sendMessage(0,bang);
 				let ment = seq.contentMetadata.MENTION;
 			    let xment = JSON.parse(ment);let pment = xment.MENTIONEES[0].M;
@@ -780,12 +780,12 @@ vx[0] = "";vx[1] = "";waitMsg = "no";vx[2] = "";vx[3] = "";
 				vx[2] = "arg2";
 			}else if(vx[2] == "arg1" && vx[3] == "mid" && seq.contentType == 13){
 				let midnya = seq.contentMetadata.mid;let bang = new Message();bang.to = seq.to;
-				bang.text = "OK !, btw pesan-nya apa ?"
+				bang.text = "好的，消息是什麼？"
 				this._client.sendMessage(0,bang);
 				vx[4] = midnya;
 				vx[2] = "arg2";
 			}else if(vx[2] == "arg1" && vx[3] == "mid" && panjang.length > 30){
-				this._sendMessage(seq,"OK !, btw pesan-nya apa ?");
+				this._sendMessage(seq,"好的，消息是什麼？");
 				vx[4] = txt;
 				vx[2] = "arg2";
 			}else if(vx[2] == "arg2" && vx[3] == "mid"){
@@ -810,27 +810,27 @@ vx[0] = "";vx[1] = "";waitMsg = "no";vx[2] = "";vx[3] = "";
 			}else{
 				let bang = new Message();
 				bang.to = seq.to;
-				bang.text = "# How to !msg\nTag / Kirim Kontak / Kirim Mid orang yang mau dikirimkan pesan !";
+				bang.text = "# 如何使用 !Msg\n標記/發送友資/發送MID！";
 				this._client.sendMessage(0,bang);
 			}
 		}if(txt == "!msg" && !isBanned(banList, seq.from_)){
 			if(vx[2] == null || typeof vx[2] === "undefined" || !vx[2]){
 			    waitMsg = "yes";
 			    vx[0] = seq.from_;vx[1] = txt;vx[3] = "mid";
-			    this._sendMessage(seq,"Mau kirim pesan ke siapa bang ?");
-				this._sendMessage(seq,"Tag / Kirim Kontak / Kirim Mid orang yang mau dikirimkan pesan !");
+			    this._sendMessage(seq,"想發送訊息給誰？";
+				this._sendMessage(seq,"標記/發送友資/發送MID;
 				vx[2] = "arg1";
 			}else{
 				waitMsg = "no";vx[0] = "";vx[1] = "";vx[2] = "";vx[3] = "";
-				this._sendMessage(seq,"#CANCELLED");
+				this._sendMessage(seq,"#取消
 			}
-		}else if(txt == '!msg' && isBanned(banList, seq.from_)){this._sendMessage(seq,"Not permitted !");}
+		}else if(txt == '!msg' && isBanned(banList, seq.from_)){this._sendMessage(seq,"不允許 !");}
 		
 		if(vx[1] == "!ban" && seq.from_ == vx[0] && waitMsg == "yes"){
 			let panjang = txt.split("");
 			if(txt == "cancel"){
 				vx[0] = "";vx[1] = "";waitMsg = "no";vx[2] = "";vx[3] = "";
-				this._sendMessage(seq,"#CANCELLED");
+				this._sendMessage(seq,"#取消");
 			}else if(cot[1]){
 				let ment = seq.contentMetadata.MENTION;
 			    let xment = JSON.parse(ment);let pment = xment.MENTIONEES[0].M;
@@ -840,7 +840,7 @@ vx[0] = "";vx[1] = "";waitMsg = "no";vx[2] = "";vx[3] = "";
 					msg.text = cot[1]+" sudah masuk daftar banlist...";
 					this._client.sendMessage(0,msg);
 				}else{
-					msg.text = "Sudah bosku !";
+					msg.text = "是的 主人！";
 					this._client.sendMessage(0, msg);
 			        banList.push(pment);
 					waitMsg = "no";vx[0] = "";vx[1] = "";vx[2] = "";vx[3] = "";
@@ -849,10 +849,10 @@ vx[0] = "";vx[1] = "";waitMsg = "no";vx[2] = "";vx[3] = "";
 				let midnya = seq.contentMetadata.mid;let msg = new Message();msg.to = seq.to;
 				if(isBanned(banList,midnya)){
 					waitMsg = "no";vx[0] = "";vx[1] = "";vx[2] = "";vx[3] = "";
-					msg.text = "Dia sudah masuk daftar banlist...";
+					msg.text = "他已進入黑名單...";
 					this._client.sendMessage(0, msg);
 				}else{
-					msg.text = "Sudah bosku !";
+					msg.text = "是的 主人!";
 					this._client.sendMessage(0, msg);
 			        banList.push(midnya);
 					waitMsg = "no";vx[0] = "";vx[1] = "";vx[2] = "";vx[3] = "";
@@ -860,15 +860,15 @@ vx[0] = "";vx[1] = "";waitMsg = "no";vx[2] = "";vx[3] = "";
 			}else if(panjang.length > 30 && panjang[0] == "u"){
 				if(isBanned(banList,txt)){
 					waitMsg = "no";vx[0] = "";vx[1] = "";vx[2] = "";vx[3] = "";
-					this._sendMessage(seq,"Dia sudah masuk daftar banlist...");
+					this._sendMessage(seq,"他已進入黑名單...");
 				}else{
-					let msg = new Message();msg.to = seq.to;msg.text = "Sudah bosku !";
+					let msg = new Message();msg.to = seq.to;msg.text = "是的 主人！";
 					this._client.sendMessage(0, msg);
 			        banList.push(txt);
 					waitMsg = "no";vx[0] = "";vx[1] = "";vx[2] = "";vx[3] = "";
 				}
 			}else{
-					this._sendMessage(seq,"# How to !ban\nKirim kontaknya / mid / tag orangnya yang mau diban sama abang !");
+					this._sendMessage(seq,"# 如何使用 !ban\n發送友資/發送MID/標記";
 			}
 		}
 		if(txt == "!ban" && isAdminOrBot(seq.from_)){
@@ -877,12 +877,12 @@ vx[0] = "";vx[1] = "";waitMsg = "no";vx[2] = "";vx[3] = "";
 			    vx[0] = seq.from_;vx[1] = txt;
 			    this._sendMessage(seq,"Ban siapa ?");
 				vx[2] = "arg1";
-				this._sendMessage(seq,"# Kirim kontaknya / mid / tag orangnya");
+				this._sendMessage(seq,"# 發送此人的友資/發送MID/標記");
 			}else{
 				waitMsg = "no";vx[0] = "";vx[1] = "";vx[2] = "";vx[3] = "";
-				this._sendMessage(seq,"#CANCELLED");
+				this._sendMessage(seq,"#取消");
 			}
-		}else if(txt == "!ban" && !isAdminOrBot(seq.from_)){this._sendMessage(seq,"Not permitted !");}
+		}else if(txt == "!ban" && !isAdminOrBot(seq.from_)){this._sendMessage(seq,"不允許 !");}
 		
 		if(vx[1] == "!adminutil" && seq.from_ == vx[0] && waitMsg == "yes"){
 			let panjang = txt.split("");
@@ -890,16 +890,16 @@ vx[0] = "";vx[1] = "";waitMsg = "no";vx[2] = "";vx[3] = "";
 			let xtxt = "";
 			if(txt == "cancel"){
 				vx[0] = "";vx[1] = "";waitMsg = "no";vx[2] = "";vx[3] = "";
-				this._sendMessage(seq,"#CANCELLED");
+				this._sendMessage(seq,"#取消");
 			}else if(vx[2] == "arg1"){
 				switch(txt){
 					case 'add':
 					    vx[2] = "arg2";vx[3] = txt;
-					    this._sendMessage(seq,"# Kirim kontaknya / mid / tag orangnya yang mau dijadikan admin");
+					    this._sendMessage(seq,"# 發送想要有權限的人的友資/mid/tag");
 					break;
 					case 'del':
-					    vx[2] = "arg2";vx[3] = txt;xtxt = "「 Admin List 」\n\n";
-					    await this._sendMessage(seq,"Pilih admin yang mau dihapus");
+					    vx[2] = "arg2";vx[3] = txt;xtxt = "「 權限名單 」\n\n";
+					    await this._sendMessage(seq,"選擇要刪除的管理員");
 						for(var i=0; i < myBot.length; i++){
 							let numb = i+1;
 							let xcontact = await this._client.getContact(myBot[i]);
@@ -920,7 +920,7 @@ vx[0] = "";vx[1] = "";waitMsg = "no";vx[2] = "";vx[3] = "";
 					break;
 					default:
 					    vx[0] = "";vx[1] = "";waitMsg = "no";vx[2] = "";vx[3] = "";
-						this._sendMessage(seq,"#CANCELLED");
+						this._sendMessage(seq,"#取消");
 					break;
 				}
 			}else if(vx[2] == "arg2" && vx[3] == "add"){
@@ -930,10 +930,10 @@ vx[0] = "";vx[1] = "";waitMsg = "no";vx[2] = "";vx[3] = "";
 					let msg = new Message();msg.to = seq.to;
 					if(isAdminOrBot(pment)){
 						waitMsg = "no";vx[0] = "";vx[1] = "";vx[2] = "";vx[3] = "";
-						msg.text = cot[1]+" , dia udah jadi admin bang...";
+						msg.text = cot[1]+" , 他已經成為一名管理員...";
 						this._client.sendMessage(0,msg);
 					}else{
-						msg.text = "Done !";
+						msg.text = "完成 !";
 						this._client.sendMessage(0, msg);
 				        myBot.push(pment);
 						waitMsg = "no";vx[0] = "";vx[1] = "";vx[2] = "";vx[3] = "";
@@ -942,10 +942,10 @@ vx[0] = "";vx[1] = "";waitMsg = "no";vx[2] = "";vx[3] = "";
 					let midnya = seq.contentMetadata.mid;let msg = new Message();msg.to = seq.to;
 					if(isAdminOrBot(midnya)){
 						waitMsg = "no";vx[0] = "";vx[1] = "";vx[2] = "";vx[3] = "";
-						msg.text = "Dia sudah masuk daftar admin...";
+						msg.text = "他已進入管理員列表...";
 						this._client.sendMessage(0, msg);
 					}else{
-						msg.text = "Done !";
+						msg.text = "完成 !";
 						this._client.sendMessage(0, msg);
 				        myBot.push(midnya);
 						waitMsg = "no";vx[0] = "";vx[1] = "";vx[2] = "";vx[3] = "";
@@ -953,9 +953,9 @@ vx[0] = "";vx[1] = "";waitMsg = "no";vx[2] = "";vx[3] = "";
 				}else if(panjang.length > 30 && panjang[0] == "u"){
 					if(isAdminOrBot(txt)){
 						waitMsg = "no";vx[0] = "";vx[1] = "";vx[2] = "";vx[3] = "";
-						this._sendMessage(seq,"Dia sudah masuk daftar banlist...");
+						this._sendMessage(seq,"他已進入黑名單....");
 					}else{
-						let msg = new Message();msg.to = seq.to;msg.text = "Sudah bosku !";
+						let msg = new Message();msg.to = seq.to;msg.text = "是的 主人 !";
 						this._client.sendMessage(0, msg);
 				        myBot.push(txt);
 						waitMsg = "no";vx[0] = "";vx[1] = "";vx[2] = "";vx[3] = "";
@@ -966,9 +966,9 @@ vx[0] = "";vx[1] = "";waitMsg = "no";vx[2] = "";vx[3] = "";
 				let ment = txt-1;
 				if (ment > myBot.length) {
                	    myBot.splice(ment, 1);
-					this._sendMessage(seq,"Berhasil !");
+					this._sendMessage(seq,"成功了！");
                 }else{
-					this._sendMessage(seq,"Admin tidak ada !");
+					this._sendMessage(seq,"管理員不在那裡！");
 				}
 			}
 		}
@@ -977,10 +977,10 @@ vx[0] = "";vx[1] = "";waitMsg = "no";vx[2] = "";vx[3] = "";
 			    waitMsg = "yes";
 			    vx[0] = seq.from_;vx[1] = txt;
 				vx[2] = "arg1";
-				this._sendMessage(seq,"「 Administrator Utility 」\n\n- Add admin = add\n- Delete admin = del\n- List admin = list");
+				this._sendMessage(seq,"「 加入/刪除 權限者 」\n\n- 加入權限者 = add\n- 刪除權限者 = del\n- 權限者名單 = list");
 			}else{
 				waitMsg = "no";vx[0] = "";vx[1] = "";vx[2] = "";vx[3] = "";
-				this._sendMessage(seq,"#CANCELLED");
+				this._sendMessage(seq,"#取消");
 			}
 		}else if(txt == "!adminutil" && !isAdminOrBot(seq.from_)){this._sendMessage(seq,"Not permitted !");}
 		
@@ -988,11 +988,11 @@ vx[0] = "";vx[1] = "";waitMsg = "no";vx[2] = "";vx[3] = "";
 			let panjang = txt.split("");
 			if(txt == "cancel"){
 				vx[0] = "";vx[1] = "";waitMsg = "no";vx[2] = "";vx[3] = "";
-				this._sendMessage(seq,"#CANCELLED");
+				this._sendMessage(seq,"#取消");
 			}else if(panjang.length >= 12 && vx[2] == "arg1"){
 				vx[4] = txt;
 				vx[2] = "arg2";
-				this._sendMessage(seq,"Ok apa pesan yang akan dikirim ?");
+				this._sendMessage(seq,"好的，想發送什麼消息？");
 			}else if(vx[2] == "arg2"){
 				this._xgetJson("http://dataninja.biz/","/dev/sms_api.php?kirimsms=kirim&nomor="+vx[4]+"&message="+textMessages,(result) => {
 					if(result.err===true){
@@ -1003,27 +1003,27 @@ vx[0] = "";vx[1] = "";waitMsg = "no";vx[2] = "";vx[3] = "";
 				});
 				vx[0] = "";vx[1] = "";waitMsg = "no";vx[2] = "";vx[3] = "";vx[4] = "";
 			}else{
-				this._sendMessage(seq,"# How to !sms\nKirim nomor orang yang dituju !");
+				this._sendMessage(seq,"# 如何使用 !sms\n 送預定人數!;
 			}
 		}
 		if(txt == "!sms" && !isBanned(banList,seq.from_)){
 			if(vx[2] == null || typeof vx[2] === "undefined" || !vx[2]){
 			    waitMsg = "yes";
 			    vx[0] = seq.from_;vx[1] = txt;
-			    this._sendMessage(seq,"SMS ke siapa ?");
+			    this._sendMessage(seq,"誰的SMS";
 				vx[2] = "arg1";
-				this._sendMessage(seq,"# Kirim nomor yang dituju");
+				this._sendMessage(seq,"# 發送預定的號碼");
 			}else{
 				waitMsg = "no";vx[0] = "";vx[1] = "";vx[2] = "";vx[3] = "";
-				this._sendMessage(seq,"#CANCELLED");
+				this._sendMessage(seq,"#取消");
 			}
-		}else if(txt == "!sms" && isBanned(banList,seq.from_)){this._sendMessage(seq,"Not permitted !");}
+		}else if(txt == "!sms" && isBanned(banList,seq.from_)){this._sendMessage(seq,"不允許 !");}
 		
 		if(vx[1] == "!unban" && seq.from_ == vx[0] && waitMsg == "yes"){
 			let panjang = txt.split("");
 			if(txt == "cancel"){
 				vx[0] = "";vx[1] = "";waitMsg = "no";vx[2] = "";vx[3] = "";
-				this._sendMessage(seq,"#CANCELLED");
+				this._sendMessage(seq,"#取消");
 			}else if(cot[1]){
 				let ment = seq.contentMetadata.MENTION;
 			    let xment = JSON.parse(ment);let pment = xment.MENTIONEES[0].M;
@@ -1034,10 +1034,10 @@ vx[0] = "";vx[1] = "";waitMsg = "no";vx[2] = "";vx[3] = "";
                         banList.splice(ment, 1);
                     }
 					waitMsg = "no";vx[0] = "";vx[1] = "";vx[2] = "";vx[3] = "";
-					bang.text = "Sudah bosku";
+					bang.text = "是的 主人";
 					this._client.sendMessage(0,bang);
 				}else{
-					bang.text = "Dia gk masuk daftar banned bos !";
+					bang.text = "他不在主人的黑名單上！";
 					this._client.sendMessage(0, bang);
 				}
 			}else if(seq.contentType == 13){
@@ -1048,10 +1048,10 @@ vx[0] = "";vx[1] = "";waitMsg = "no";vx[2] = "";vx[3] = "";
                         banList.splice(ment, 1);
                     }
 					waitMsg = "no";vx[0] = "";vx[1] = "";vx[2] = "";vx[3] = "";
-					bang.text = "Sudah bosku";
+					bang.text = "是的 主人";
 					this._client.sendMessage(0,bang);
 				}else{
-					bang.text = "Dia gk masuk daftar banned bos !";
+					bang.text = "他不在主人的黑名單上！";
 					this._client.sendMessage(0, bang);
 				}
 			}else if(panjang.length > 30 && panjang[0] == "u"){
@@ -1062,13 +1062,13 @@ vx[0] = "";vx[1] = "";waitMsg = "no";vx[2] = "";vx[3] = "";
                         banList.splice(ment, 1);
                     }
 					waitMsg = "no";vx[0] = "";vx[1] = "";vx[2] = "";vx[3] = "";
-					bang.text = "Sudah bosku";
+					bang.text = "是的 主人";
 					this._client.sendMessage(0,bang);
 				}else{
-					this._sendMessage(seq,"Dia gk masuk daftar banned bos !");
+					this._sendMessage(seq,"他不在主人的黑名單上!");
 				}
 			}else{
-				this._sendMessage(seq,"# How to !unban\nKirim kontaknya / mid / tag orangnya yang mau di-unban");
+				this._sendMessage(seq,"# 如何使用 !Unban\n發送要移除黑名單的友資/mid/標記他");
 			}
 		}
 		if(txt == "!unban" && isAdminOrBot(seq.from_)){
@@ -1081,16 +1081,16 @@ vx[0] = "";vx[1] = "";waitMsg = "no";vx[2] = "";vx[3] = "";
 				    seq.text += "\n-["+orangnya[0].mid+"]["+orangnya[0].displayName+"]";
 				}
 				this._sendMessage(seq,seq.text);
-			    this._sendMessage(seq,"unban siapa ?");
+			    this._sendMessage(seq,"哪個要移除黑名單");
 				vx[2] = "arg1";
 			}else{
 				waitMsg = "no";vx[0] = "";vx[1] = "";vx[2] = "";vx[3] = "";
-				this._sendMessage(seq,"#CANCELLED");
+				this._sendMessage(seq,"#取消");
 			}
-		}else if(txt == "!unban" && !isAdminOrBot(seq.from_)){this._sendMessage(seq,"Not permitted !");}
+		}else if(txt == "!unban" && !isAdminOrBot(seq.from_)){this._sendMessage(seq,"不允許 !");}
 		
 		if(txt == "!banlist"){
-			seq.text = "[Mid] [Name]\n\n";
+			seq.text = "[Mid] [名稱]\n\n";
 			for(var i = 0; i < banList.length; i++){
 			    let orangnya = await this._getContacts([banList[i]]);
 				seq.text += "["+orangnya[0].mid+"]["+orangnya[0].displayName+"]\n";
@@ -1105,7 +1105,7 @@ vx[0] = "";vx[1] = "";waitMsg = "no";vx[2] = "";vx[3] = "";
 		if(vx[1] == "!youtube" && seq.from_ == vx[0] && waitMsg == "yes"){
 			if(txt == "cancel"){
 				vx[0] = "";vx[1] = "";waitMsg = "no";vx[2] = "";vx[3] = "";
-				this._sendMessage(seq,"#CANCELLED");
+				this._sendMessage(seq,"#取消");
 			}else if(vx[2] == "arg1" && linktxt[1]){
 				vx[3] = '';vx[0] = "";vx[1] = "";waitMsg = "no";vx[2] = "";
 				let dlUrl = "http"+linktxt[1];let tspl = textMessages.split("youtu.be/");
@@ -1116,7 +1116,7 @@ vx[0] = "";vx[1] = "";waitMsg = "no";vx[2] = "";vx[3] = "";
 				let infDl = new Message();
 				infDl.to = seq.to;
 				var options = {
-             	   uri: downloader,
+             	   url: downloader,
              	   qs: {url: dlUrl},
             	   json: true // Automatically parses the JSON string in the response
             	};
@@ -1127,12 +1127,12 @@ vx[0] = "";vx[1] = "";waitMsg = "no";vx[2] = "";vx[3] = "";
             	})
              	  .catch(function (err) {
            	    });
-				if(hasil == "Error: no_media_found"){
-			    	infDl.text = "Gagal bang !, mungkin url-nya salah...";
+				if(hasil == "Error:找不到媒體"){
+			    	infDl.text = "失敗了，也許這個網址錯了...";
 				}else{
 					let title = hasil.title;
 					let urls = hasil.urls;
-					infDl.text = "[ Youtube Downloader ]\nTitle: "+title+"\n";
+					infDl.text = "[ Youtube下載器 ]\nTitle: "+title+"\n";
 					for(var i = 0; i < urls.length; i++){
 						let idU = await this.gooGl(urls[i].id);
 						infDl.text += "\n\
@@ -1142,28 +1142,28 @@ Link Download: "+idU.id+"\n";
 				}
 				this._sendMessage(seq,infDl.text);
 			} else {
-				this._sendMessage(seq,"# How to !youtube\nKirim link youtubenya !");
+				this._sendMessage(seq,"# 如何使用!Youtube\n發送youtubenya鏈接！");
 			}
 		}
 		if(txt == "!youtube" && !isBanned(seq.from_)){
 			if(vx[2] == null || typeof vx[2] === "undefined" || !vx[2]){
 				waitMsg = "yes";
 			    vx[0] = seq.from_;vx[1] = txt;
-			    this._sendMessage(seq,"Mau download video youtube bang ? OK, kirim link youtubenya !");
+			    this._sendMessage(seq,"想下載YouTube視頻嗎？ 好的，發送youtubenya鏈接！");
 				vx[2] = "arg1";
 			}else{
 				waitMsg = "no";vx[0] = "";vx[1] = "";vx[2] = "";vx[3] = "";
-				this._sendMessage(seq,"#CANCELLED");
+				this._sendMessage(seq,"#取消");
 			}
-		}else if(txt == "!youtube" && isBanned(seq.from_)){this._sendMessage(seq,"Not permitted !");}
+		}else if(txt == "!youtube" && isBanned(seq.from_)){this._sendMessage(seq,"不允許 !");}
 		
 		if(vx[1] == "!animesearch" && seq.from_ == vx[0] && waitMsg == "yes"){
 			if(txt == "cancel"){
 				vx[0] = "";vx[1] = "";waitMsg = "no";vx[2] = "";vx[3] = "";
-				this._sendMessage(seq,"#CANCELLED");
+				this._sendMessage(seq,"#取消");
 			}else if(vx[2] == "arg1" && seq.contentType == 1){
 				vx[2] = "arg2";vx[3] = seq.id;
-				let hasil;let hasiltxt = "「 Anime Guess 」\n\n";
+				let hasil;let hasiltxt = "「 猜動漫 」\n\n";
 				this._download("https://obs-sg.line-apps.com/talk/m/download.nhn?oid="+seq.id+"&tid=original","img",0,(result) => {
 					const filepath = path.resolve(result);
                     //let buffx = fs.readFileSync(filepath);
@@ -1219,7 +1219,7 @@ Link Download: "+idU.id+"\n";
 				})})
 			}else if(vx[2] == "arg2" && txt == "page2"){
 				vx[2] = "arg3";
-				let hasil;let hasiltxt = "「 Anime Guess 」\n\n";
+				let hasil;let hasiltxt = "「 猜動漫 」\n\n";
 				this._download("https://obs-sg.line-apps.com/talk/m/download.nhn?oid="+vx[3]+"&tid=original","img",0,(result) => {
 					const filepath = path.resolve(result);
                     //let buffx = fs.readFileSync(filepath);
@@ -1275,7 +1275,7 @@ Link Download: "+idU.id+"\n";
 				})})
 			} else if(vx[2] == "arg3" && txt == "page3"){
 				vx[2] = "arg4";
-				let hasil;let hasiltxt = "「 Anime Guess 」\n\n";
+				let hasil;let hasiltxt = "「 猜動漫 」\n\n";
 				this._download("https://obs-sg.line-apps.com/talk/m/download.nhn?oid="+vx[3]+"&tid=original","img",0,(result) => {
 					const filepath = path.resolve(result);
                     //let buffx = fs.readFileSync(filepath);
@@ -1396,25 +1396,25 @@ Link Download: "+idU.id+"\n";
 				vx[0] = "";vx[1] = "";waitMsg = "no";vx[2] = "";vx[3] = "";
 				this._sendMessage(seq,"# STOPPED");
 			} else {
-				this._sendMessage(seq,"# How to !animesearch\nKirim gambarnya yang akan dicari !");
+				this._sendMessage(seq,"# 如何使用 !Animesearch\n發送要搜索的圖像！");
 			}
 		}
 		if(txt == "!animesearch" && !isBanned(seq.from_)){
 			if(vx[2] == null || typeof vx[2] === "undefined" || !vx[2]){
 				waitMsg = "yes";
 			    vx[0] = seq.from_;vx[1] = txt;
-			    this._sendMessage(seq,"Mau cari anime pake gambar bang ? OK, kirim gambarnya !");
+			    this._sendMessage(seq,"想用圖片找動漫嗎？ 好的，發送圖片！");
 				vx[2] = "arg1";
 			}else{
 				waitMsg = "no";vx[0] = "";vx[1] = "";vx[2] = "";vx[3] = "";
 				this._sendMessage(seq,"#CANCELLED");
 			}
-		}else if(txt == "!animesearch" && isBanned(seq.from_)){this._sendMessage(seq,"Not permitted !");}
+		}else if(txt == "!animesearch" && isBanned(seq.from_)){this._sendMessage(seq,"不允許 !");}
 		
 		
 		if(vx[1] == "!tts" && seq.from_ == vx[0] && waitMsg == "yes"){
 			if(vx[2] == "arg1"){
-				this._sendMessage(seq,"Ok, kirim text-nya");
+				this._sendMessage(seq,"好的，發送文字");
 				vx[2] = "arg2";vx[3] = txt;
 			}else if(vx[2] == "arg2" && /^[A-Za-z0-9 ]+$/.test(textMessages)){
 				waitMsg = "no";vx[0] = "";vx[1] = "";vx[2] = "";
@@ -1432,7 +1432,7 @@ Link Download: "+idU.id+"\n";
 						vx[3] = "";
 					break;
 					default:
-					    this._sendMessage(seq,"Bahasa tidak diketahui !");
+					    this._sendMessage(seq,"語言不詳！");
 						vx[3] = "";
 					break;
 				}
