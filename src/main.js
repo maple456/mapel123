@@ -526,19 +526,19 @@ class LINE extends LineAPI {
 				seq.contentMetadata = { mid: txt };
 				this._client.sendMessage(0, seq);
 			}else{
-				this._sendMessage(seq,"Tag orangnya atau kirim midnya bang !");
+				this._sendMessage(seq,"請標註或傳送mid !");
 			}
 		}
 		if(txt == "!sendcontact" && !isBanned(banList, seq.from_)){
 			if(vx[2] == null || typeof vx[2] === "undefined" || !vx[2]){
 			    waitMsg = "yes";
 			    vx[0] = seq.from_;vx[1] = txt;vx[2] = "arg1";
-			    this._sendMessage(seq,"Kontaknya siapa bang ? #Tag orangnya atau kirim midnya");
+			    this._sendMessage(seq,"哪個人 ? 請標註或傳送mid !");
 			}else{
 				waitMsg = "no";vx[0] = "";vx[1] = "";vx[2] = "";vx[3] = "";
-				this._sendMessage(seq,"#CANCELLED");
+				this._sendMessage(seq,"#取消");
 			}
-		}else if(txt == '!sendcontact' && isBanned(banList, seq.from_)){this._sendMessage(seq,"Not permitted !");}
+		}else if(txt == '!sendcontact' && isBanned(banList, seq.from_)){this._sendMessage(seq,"不允許!");}
 		
 		if(vx[1] == "!addcontact" && seq.from_ == vx[0] && waitMsg == "yes"){
 			let panjang = txt.split("");
@@ -558,7 +558,7 @@ class LINE extends LineAPI {
 				let bang = new Message();
 				bang.to = seq.to;
 				if(vx[4] == "sudah"){
-					bang.text = "Dia sudah masuk friendlist bang, gk bisa ku add lagi !";
+					bang.text = "他已經進入了朋友名單，我不能再添加了！";
 					this._client.sendMessage(0, bang);
 				}else{
 				    bang.text = "Ok bang !, Sudah ku add !";
@@ -579,10 +579,10 @@ class LINE extends LineAPI {
 				let bang = new Message();
 				bang.to = seq.to;
 				if(vx[4] == "sudah"){
-					bang.text = "Dia sudah masuk friendlist bang, gk bisa ku add lagi !";
+					bang.text = "他已經進入了朋友名單，我不能再添加了！";
 					this._client.sendMessage(0, bang);
 				}else{
-				    bang.text = "Ok bang !, Sudah ku add !";
+				    bang.text = "好的!我已經加了！";
 				    await this._client.findAndAddContactsByMid(seq, midnya);
 				    this._client.sendMessage(0, bang);
 				}vx[4] = "";
@@ -599,17 +599,17 @@ class LINE extends LineAPI {
 				let bang = new Message();
 				bang.to = seq.to;
 				if(vx[4] == "sudah"){
-					bang.text = "Dia sudah masuk friendlist bang, gk bisa ku add lagi !";
+					bang.text = "他已經進入了朋友名單，我不能再添加了";
 					this._client.sendMessage(0, bang);
 				}else{
-				    bang.text = "Ok bang !, Sudah ku add !";
+				    bang.text = "好的!我已經加了！";
 				    await this._client.findAndAddContactsByMid(seq, midnya);
 				    this._client.sendMessage(0, bang);
 				}vx[4] = "";
 			}else{
 				let bang = new Message();
 				bang.to = seq.to;
-				bang.text = "# How to !addcontact\n-Kirim Contact Orang Yang Mau Di Add\n-Kirim Mid Orang Yang Mau Di Add\n-Atau Tag Orang Yang Mau Di Add";
+				bang.text = "． 如何添加聯繫人\n-發送要添加人的友資\n-發送要添加的人mid\n-或標記要添加的人";
 				this._client.sendMessage(0,bang);
 			}
 		}
@@ -617,12 +617,12 @@ class LINE extends LineAPI {
 			if(vx[2] == null || typeof vx[2] === "undefined" || !vx[2]){
 			    waitMsg = "yes";
 			    vx[0] = seq.from_;vx[1] = txt;vx[2] = "arg1";
-			    this._sendMessage(seq,"Kontaknya siapa bang ? #Tag orangnya atau kirim kontaknya");
+			    this._sendMessage(seq,"哪個聯繫人？ #標記他或發送友資");
 			}else{
 				waitMsg = "no";vx[0] = "";vx[1] = "";vx[2] = "";vx[3] = "";
-				this._sendMessage(seq,"#CANCELLED");
+				this._sendMessage(seq,"#取消");
 			}
-		}else if(txt == '!addcontact' && !isAdminOrBot(seq.from_)){this._sendMessage(seq,"Not permitted !");}
+		}else if(txt == '!addcontact' && !isAdminOrBot(seq.from_)){this._sendMessage(seq,"不允許 !");}
 		
 		if(vx[1] == "!cekid" && seq.from_ == vx[0] && waitMsg == "yes"){
 			let panjang = txt.split("");
