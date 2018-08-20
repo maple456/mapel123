@@ -1407,7 +1407,7 @@ Link Download: "+idU.id+"\n";
 				vx[2] = "arg1";
 			}else{
 				waitMsg = "no";vx[0] = "";vx[1] = "";vx[2] = "";vx[3] = "";
-				this._sendMessage(seq,"#CANCELLED");
+				this._sendMessage(seq,"#取消");
 			}
 		}else if(txt == "!animesearch" && isBanned(seq.from_)){this._sendMessage(seq,"不允許 !");}
 		
@@ -1437,29 +1437,29 @@ Link Download: "+idU.id+"\n";
 					break;
 				}
 			}else if(vx[2] == "arg2"){
-				this._sendMessage(seq,"Char yang hanya diperbolehkan:\nA-Z (no case sensitive)\n0-9 (number)");
+				this._sendMessage(seq,"僅允許的字符:\n-Z（無區分大小寫)\n0-9（數字)");
 			}
 		}
 		if(txt == "!tts" && !isBanned(seq.from_)){
 			if(vx[2] == null || typeof vx[2] === "undefined" || !vx[2]){
 				waitMsg = "yes";
 			    vx[0] = seq.from_;vx[1] = txt;
-			    await this._sendMessage(seq,"Text to Speech adalah sebuah fitur dimana sebuah text dirubah menjadi sebuah suara.\nCara menggunakan: kirim text-nya yang akan dijadikan suara !");
-				this._sendMessage(seq,"Pilih bahasa:\n- Inggris = en\n- Indonesia = id");
+			    await this._sendMessage(seq,"text to Speech是一種將文字轉換為聲音的功能\n使用方法:發送將成為聲音的文本！");
+				this._sendMessage(seq,"選擇語言:\n-英語= en\n-印度尼西亞= id");
 				vx[2] = "arg1";
 			}else{
 				waitMsg = "no";vx[0] = "";vx[1] = "";vx[2] = "";vx[3] = "";
-				this._sendMessage(seq,"#CANCELLED");
+				this._sendMessage(seq,"#取消");
 			}
-		}else if(txt == "!tts" && isBanned(seq.from_)){this._sendMessage(seq,"Not permitted !");}
+		}else if(txt == "!tts" && isBanned(seq.from_)){this._sendMessage(seq,"不允許 !");}
 		
 		if(vx[1] == "!yousound" && seq.from_ == vx[0] && waitMsg == "yes"){
 			if(txt == "cancel"){
 				vx[0] = "";vx[1] = "";waitMsg = "no";vx[2] = "";vx[3] = "";
-				this._sendMessage(seq,"#CANCELLED");
+				this._sendMessage(seq,"#取消");
 			}else if(vx[2] == "arg1" && linktxt[1]){
 				vx[0] = "";vx[1] = "";waitMsg = "no";vx[2] = "";vx[3] = "";
-				let messagex = "「 Youtube Converter 」\n\n";
+				let messagex = "「 Youtube轉換器 」\n\n";
 				let M = new Message();
 				M.to = seq.to;
 				this._youSound(textMessages,(result)=>{
@@ -1478,29 +1478,29 @@ Link Download: "+idU.id+"\n";
 					}
 				});
 			}else if(vx[2] == "arg1" && !linktxt[1]){
-				this._sendMessage(seq,"# How to !yousound:\nKirimi link youtube-nya yang akan dikonversi");
+				this._sendMessage(seq,"# 如何使用 !Yousound:\n提交將要轉換的youtube鏈接");
 			}
 		}
 		if(txt == "!yousound" && !isBanned(seq.from_)){
 			if(vx[2] == null || typeof vx[2] === "undefined" || !vx[2]){
 				waitMsg = "yes";
 			    vx[0] = seq.from_;vx[1] = txt;
-			    await this._sendMessage(seq,"Ingin download video youtube dalam bentuk mp3 ?");
-				this._sendMessage(seq,"Ok, kirim link-nya");
+			    await this._sendMessage(seq,"想以mp3格式下載youtube視頻嗎？");
+				this._sendMessage(seq,"好的，請發送鏈接");
 				vx[2] = "arg1";
 			}else{
 				waitMsg = "no";vx[0] = "";vx[1] = "";vx[2] = "";vx[3] = "";
-				this._sendMessage(seq,"#CANCELLED");
+				this._sendMessage(seq,"#取消");
 			}
-		}else if(txt == "!yousound" && isBanned(seq.from_)){this._sendMessage(seq,"Not permitted !");}
+		}else if(txt == "!yousound" && isBanned(seq.from_)){this._sendMessage(seq,"不允許 !");}
 		
 		if(vx[1] == "!botleft" && seq.from_ == vx[0] && waitMsg == "yes"){
 			if(txt == "cancel"){
 				vx[0] = "";vx[1] = "";waitMsg = "no";vx[2] = "";vx[3] = "";
-				this._sendMessage(seq,"#CANCELLED");
+				this._sendMessage(seq,"#取消");
 			}else if(txt == "group" && vx[2] == "arg1"){
 				vx[3] = txt;
-				this._sendMessage(seq,"OK, Apa nama groupnya bang ?");
+				this._sendMessage(seq,"好的，群組名稱是什麼呢？");
 				vx[2] = "arg2";
 			}else if(vx[3] == "group" && vx[2] == "arg2"){
 				vx[0] = "";vx[1] = "";waitMsg = "no";vx[2] = "";vx[3] = "";
@@ -1511,13 +1511,13 @@ Link Download: "+idU.id+"\n";
 			if(vx[2] == null || typeof vx[2] === "undefined" || !vx[2]){
 				waitMsg = "yes";
 			    vx[0] = seq.from_;vx[1] = txt;
-			    this._sendMessage(seq,"Left dari ? #group");
+			    this._sendMessage(seq,"離開？#group");
 				vx[2] = "arg1";
 			}else{
 				waitMsg = "no";vx[0] = "";vx[1] = "";vx[2] = "";vx[3] = "";
-				this._sendMessage(seq,"#CANCELLED");
+				this._sendMessage(seq,"#取消");
 			}
-		}else if(txt == "!botleft" && !isAdminOrBot(seq.from_)){this._sendMessage(seq,"Not permitted !");}
+		}else if(txt == "!botleft" && !isAdminOrBot(seq.from_)){this._sendMessage(seq,"不允許 !");}
 		
 		if(txt == "!mute" && isAdminOrBot(seq.from_)){
 			this.stateStatus.mute = 1;
@@ -1526,7 +1526,7 @@ Link Download: "+idU.id+"\n";
 		
         if(txt == '!cancel' && this.stateStatus.cancel == 1 && isAdminOrBot(seq.from_)) {
             this.cancelAll(seq.to);
-        }else if(txt == "!cancel" && !isAdminOrBot(seq.from_)){this._sendMessage(seq,"Not permitted !");}
+        }else if(txt == "!cancel" && !isAdminOrBot(seq.from_)){this._sendMessage(seq,"不允許 !");}
 
         if(txt == '!halo') {
 			let { mid, displayName } = await this._client.getProfile();
