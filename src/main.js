@@ -139,7 +139,7 @@ class LINE extends LineAPI {
 		if(operation.type == 16 && this.stateStatus.salam == 1){//join group
 			let halo = new Message();
 			halo.to = operation.param1;
-			halo.text = "Halo, Salam Kenal ^_^ !";
+			halo.text = "哈囉，大家好!";
 			this._client.sendMessage(0, halo);
 		}
 		
@@ -147,7 +147,7 @@ class LINE extends LineAPI {
 		    let halobos = new Message();
 			halobos.to = operation.param1;
 			halobos.toType = 2;
-			halobos.text = "Halo bos !, selamat datang di group ini bos !";
+			halobos.text = "主人好，歡迎來到這個群組！";
 			this._client.sendMessage(0, halobos);
 		}else if(operation.type == 17 && this.stateStatus.salam == 1){//ada yang join
 			let seq = new Message();
@@ -161,7 +161,7 @@ class LINE extends LineAPI {
 		    let babay = new Message();
 			babay.to = operation.param1;
 			babay.toType = 2;
-			babay.text = "Ada apa bang ? kok leave ?";
+			babay.text = "他怎麼了? 為什麼退出?";
 			this._invite(operation.param1,[operation.param2]);
 			this._client.sendMessage(0, babay);
 		}else if(operation.type == 15 && !isAdminOrBot(operation.param2)){
@@ -173,7 +173,7 @@ class LINE extends LineAPI {
 		if(operation.type == 5 && this.stateStatus.salam == 1) {//someone adding me..
             let halo = new Message();
 			halo.to = operation.param1;
-			halo.text = "Creator: line://ti/p/~rakamastah (~GoogleX)";
+			halo.text = "感謝你加本帳號為好友";
 			this._client.sendMessage(0, halo);
         }
 
@@ -186,13 +186,13 @@ class LINE extends LineAPI {
             if(isAdminOrBot(operation.param3)) {
 				this.textMessage("0105",kasihtau,operation.param3,1);
                 //this._inviteIntoGroup(operation.param1,operation.param3);
-				//kasihtau.text = "Jangan kick botku !";
+				//kasihtau.text = "不要踢我的機器人！";
 				//this._client.sendMessage(0, kasihtau);
 				var kickhim = 'yes';
             }else if(!isAdminOrBot(operation.param3)){
 				this.textMessage("0106",kasihtau,operation.param3,1);
 				if(!isAdminOrBot(operation.param2)){
-					kasihtau.text = "Jangan main kick !";
+					kasihtau.text = "不要踢！";
 				    this._client.sendMessage(0, kasihtau);
 				}
 				if(this.stateStatus.protect == 1){
@@ -507,7 +507,7 @@ class LINE extends LineAPI {
 			let panjang = txt.split("");
 			if(txt == "cancel"){
 				vx[0] = "";vx[1] = "";waitMsg = "no";vx[2] = "";vx[3] = "";
-				this._sendMessage(seq,"# CANCELLED");
+				this._sendMessage(seq,"#取消");
 			}else if(txt == "me"){
 				vx[0] = "";vx[1] = "";waitMsg = "no";vx[2] = "";vx[3] = "";
 				seq.text = "Me";seq.contentType = 13;
@@ -544,7 +544,7 @@ class LINE extends LineAPI {
 			let panjang = txt.split("");
 			if(txt == "cancel"){
 				vx[0] = "";vx[1] = "";waitMsg = "no";vx[2] = "";vx[3] = "";
-				this._sendMessage(seq,"# CANCELLED");
+				this._sendMessage(seq,"#取消");
 			}else if(seq.contentType == 13){
 				vx[0] = "";vx[1] = "";waitMsg = "no";vx[2] = "";vx[3] = "";
 				let midnya = seq.contentMetadata.mid;
@@ -561,7 +561,7 @@ class LINE extends LineAPI {
 					bang.text = "他已經進入了朋友名單，我不能再加了！";
 					this._client.sendMessage(0, bang);
 				}else{
-				    bang.text = "Ok bang !, Sudah ku add !";
+				    bang.text = "好的!我已經加了！";
 				    await this._client.findAndAddContactsByMid(seq, midnya);
 				    this._client.sendMessage(0, bang);
 				}vx[4] = "";
@@ -1645,7 +1645,7 @@ Link Download: "+idU.id+"\n";
 			await this._client.sendMessage(0,M);
 			const rtime = Math.floor(Date.now() / 1000);
             const xtime = rtime	- curTime;
-	this._sendMessage(seq, "測速中...");
+	this._sendMessage(seq, "拼命測速中...");
             this._sendMessage(seq, xtime+' 秒');
         }else if(txt == '!speed' && isBanned(banList, seq.from_)){this._sendMessage(seq,"不允許！");}
 
@@ -1683,7 +1683,7 @@ Link Download: "+idU.id+"\n";
             for (var i = 0; i < listMember.length; i++) {
                 if(listMember[i].mid==param){
 					let namanya = listMember[i].dn;
-					seq.text = 'Halo @'+namanya+', Selamat datang bro ! Salam Kenal ^_^';
+					seq.text = '哈囉 @'+namanya+', 歡迎你加入本群 ! ';
 					let midnya = listMember[i].mid;
 					let kata = seq.text.split("@").slice(0,1);
 					let kata2 = kata[0].split("");
@@ -1707,7 +1707,7 @@ Link Download: "+idU.id+"\n";
 		
 		if(txt == "!tagall" && seq.toType == 2 && !isBanned(banList, seq.from_)){
 			await this.tagAlls(seq);
-		}else if(txt == '!tagall' && isBanned(banList, seq.from_)){this._sendMessage(seq,"Not permitted !");}
+		}else if(txt == '!tagall' && isBanned(banList, seq.from_)){this._sendMessage(seq,"不允許 !");}
 		
 		if(txt == '0103' && lockt == 1){
 			let ax = await this._client.getGroup(seq.to);
