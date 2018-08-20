@@ -822,7 +822,7 @@ vx[0] = "";vx[1] = "";waitMsg = "no";vx[2] = "";vx[3] = "";
 				vx[2] = "arg1";
 			}else{
 				waitMsg = "no";vx[0] = "";vx[1] = "";vx[2] = "";vx[3] = "";
-				this._sendMessage(seq,"#取消
+				this._sendMessage(seq,"#取消");
 			}
 		}else if(txt == '!msg' && isBanned(banList, seq.from_)){this._sendMessage(seq,"不允許 !");}
 		
