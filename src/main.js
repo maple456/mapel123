@@ -63,45 +63,45 @@ class LINE extends LineAPI {
 			salam: 1 //1 = Yes, 0 = No
         }
 		this.keyhelp = "\n\
-====================\n\
-# Keyword List\n\n\
-=> !addcontact *ADMIN*\n\
-=> !adminutil *ADMIN*\n\
-=> !animesearch\n\
-=> !ban *ADMIN*\n\
-=> !banlist\n\
-=> !botcontact\n\
-=> !botleft *ADMIN*\n\
-=> broadcast *ADMIN*\n\
+═══════════════\n\
+# 命令清單\n\n\
+=> !addcontact *ADMIN* 加入好友\n\
+=> !adminutil *ADMIN* 權限者工具\n\
+=> !animesearch 動漫搜尋\n\
+=> !ban *ADMIN* 新增黑名單\n\
+=> !banlist 黑名單列表\n\
+=> !botcontact Bot資訊\n\
+=> !botleft *ADMIN* 離開群組\n\
+=> broadcast *ADMIN* 好友廣播\n\
 => !cancel\n\
-=> !cekid\n\
-=> !curl\n\
+=> !cekid 查看mid\n\
+=> !curl 關閉\n\
+=> !gurl 開啟網址\n\
 => !getimage\n\
-=> !ginfo\n\
-=> !grouputil *ADMIN*\n\
-=> !gURL\n\
-=> !halo\n\
-=> !kepo\n\
-=> !key\n\
-=> !kickban *ADMIN*\n\
-=> !kickall *ADMIN*\n\
-=> !kickme\n\
-=> !msg\n\
-=> !mute *ADMIN*\n\
-=> !myid\n\
-=> !refresh *ADMIN*\n\
-=> !sendcontact\n\
-=> !setting\n\
-=> !sms\n\
-=> !speed\n\
-=> !tagall\n\
+=> !ginfo 群組訊息\n\
+=> !grouputil *ADMIN* 群組工具\n\
+=> !h\n\
+=> !kepo 查看資訊\n\
+=> !key 指令表\n\
+=> !kickban *ADMIN* 踢掉黑名單\n\
+=> !kickall *ADMIN* 踢掉全部人\n\
+=> !kickme 踢掉我\n\
+=> !msg 傳送訊息\n\
+=> !mute *ADMIN* 安靜\n\
+=> !myid 我的mid\n\
+=> !refresh *ADMIN* 清理訊息\n\
+=> !sendcontact 傳送友資\n\
+=> !setting 設定\n\
+=> !sms 消息\n\
+=> sp 速度\n\
+=> !tagall 標記全部人\n\
 => !tts\n\
-=> !unmute *ADMIN*\n\
-=> !unban *ADMIN*\n\
-=> !whattime\n\
-=> !yousound\n\
-=> !youtube\n\
-\n\n# Gunakan bot dengan bijak ^_^";
+=> !unmute *ADMIN* 取消安靜\n\
+=> !unban *ADMIN* 取消黑名單\n\
+=> !whattime 現在時間\n\
+=> !yousound 網址查youtube\n\
+=> !youtube youtube轉mp3下載\n\
+\n\n# 作者: 楓糖";
         var that = this;
     }
 
@@ -1528,9 +1528,9 @@ Link Download: "+idU.id+"\n";
             this.cancelAll(seq.to);
         }else if(txt == "!cancel" && !isAdminOrBot(seq.from_)){this._sendMessage(seq,"不允許 !");}
 
-        if(txt == '!halo') {
+        if(txt == '!hello') {
 			let { mid, displayName } = await this._client.getProfile();
-            this._sendMessage(seq, 'Hai, disini '+displayName);
+            this._sendMessage(seq, '安安，我是 '+displayName);
         }
 		
 		if(vx[1] == "!grouputil" && seq.from_ == vx[0] && waitMsg == "yes"){
@@ -1668,12 +1668,12 @@ Link Download: "+idU.id+"\n";
 			let botOwner = await this._client.getContacts([myBot[0]]);
             let { mid, displayName } = await this._client.getProfile();
 			let key2 = "\n\
-╔═══════════════════\n\
+╔═══════════════\n\
 ║． Bot名稱   : "+displayName+"\n\
 ║． BotMID    : \n["+mid+"]\n\
 ║． Bot狀態   : 運作中\n\
 ║． BotOwner  : "+botOwner[0].displayName+"\n\
-════════════════════\n";
+╚═══════════════\n";
 			seq.text = key2 += this.keyhelp;
 			this._client.sendMessage(0, seq);
 		}
