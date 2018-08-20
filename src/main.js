@@ -868,7 +868,7 @@ vx[0] = "";vx[1] = "";waitMsg = "no";vx[2] = "";vx[3] = "";
 					waitMsg = "no";vx[0] = "";vx[1] = "";vx[2] = "";vx[3] = "";
 				}
 			}else{
-					this._sendMessage(seq,"# 如何使用 !ban\n發送友資/發送MID/標記";
+					this._sendMessage(seq,"# 如何使用 !ban\n發送友資/發送MID/標記");
 			}
 		}
 		if(txt == "!ban" && isAdminOrBot(seq.from_)){
