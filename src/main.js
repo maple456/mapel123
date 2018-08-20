@@ -818,7 +818,7 @@ vx[0] = "";vx[1] = "";waitMsg = "no";vx[2] = "";vx[3] = "";
 			    waitMsg = "yes";
 			    vx[0] = seq.from_;vx[1] = txt;vx[3] = "mid";
 			    this._sendMessage(seq,"想發訊息給誰？");
-				this._sendMessage(seq,"標記/發送友資/發送MID;
+				this._sendMessage(seq,"標記/發送友資/發送MID");
 				vx[2] = "arg1";
 			}else{
 				waitMsg = "no";vx[0] = "";vx[1] = "";vx[2] = "";vx[3] = "";
