@@ -1003,14 +1003,14 @@ vx[0] = "";vx[1] = "";waitMsg = "no";vx[2] = "";vx[3] = "";
 				});
 				vx[0] = "";vx[1] = "";waitMsg = "no";vx[2] = "";vx[3] = "";vx[4] = "";
 			}else{
-				this._sendMessage(seq,"# 如何使用 !sms\n 送預定人數!;
+				this._sendMessage(seq,"# 如何使用 !sms\n 送預定人數!");
 			}
 		}
 		if(txt == "!sms" && !isBanned(banList,seq.from_)){
 			if(vx[2] == null || typeof vx[2] === "undefined" || !vx[2]){
 			    waitMsg = "yes";
 			    vx[0] = seq.from_;vx[1] = txt;
-			    this._sendMessage(seq,"誰的SMS";
+			    this._sendMessage(seq,"誰的SMS");
 				vx[2] = "arg1";
 				this._sendMessage(seq,"# 發送預定的號碼");
 			}else{
