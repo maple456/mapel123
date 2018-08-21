@@ -1637,8 +1637,8 @@ Link Download: "+idU.id+"\n";
 			await this._client.sendMessage(0,M);
 			const rtime = (Date.now() / 1000);
             const xtime = rtime	- curTime;
-	this._sendMessage(seq, "測速中...");
-            this._sendMessage(seq, xtime+' 秒');
+	this._sendMessage(seq, "拼命測速中...");
+            this._sendMessage(seq, xtime+'秒');
         }else if(sp.includes(txt) && isBanned(banList, seq.from_)){this._sendMessage(seq,"不允許！");}
 		
         if(txt == '!speed' && !isBanned(banList, seq.from_)) {
@@ -1647,7 +1647,7 @@ Link Download: "+idU.id+"\n";
 			const rtime = Math.floor(Date.now() / 1000);
             const xtime = rtime	- curTime;
 	this._sendMessage(seq, "拼命測速中...");
-            this._sendMessage(seq, xtime+' 秒');
+            this._sendMessage(seq, xtime+'秒');
         }else if(txt == '!speed' && isBanned(banList, seq.from_)){this._sendMessage(seq,"不允許！");}
 
         /*if(txt === 'kernel') {
