@@ -46,6 +46,6 @@ client.startx().then(async (res) => {
 				LINE.poll(ops[op])
 			}
 		}
-		LINE.aLike() //AutoLike (CAUSE LAG)
+                //LINE.aLike() //AutoLike (CAUSE LAG) )
 	}
 });
