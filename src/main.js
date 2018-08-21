@@ -14,8 +14,8 @@ const banList = [];//Banned list
 var groupList = new Array();//Group list
 var vx = {};var midnornama,pesane,kickhim;var waitMsg = "no";//DO NOT CHANGE THIS
 const imgArr = ['png','jpg','jpeg','gif','bmp','webp'];//DO NOT CHANGE THIS
-var komenTL = "AutoLike by GoogleX\nline://ti/p/~rakamastah"; //Comment for timeline
-var bcText = "Masukan teks untuk broadcast";
+var komenTL = "AutoLike by maplenline://ti/p/~36557153"; //Comment for timeline
+var bcText = "輸入廣播文字";
 var limitposts = '10'; //Output timeline post
 
 function isAdminOrBot(param) {
