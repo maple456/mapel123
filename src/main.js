@@ -1220,7 +1220,7 @@ Link Download: "+idU.id+"\n";
 				})})
 			}else if(vx[2] == "arg2" && txt == "page2"){
 				vx[2] = "arg3";
-				let hasil;let hasiltxt = "「 猜動漫 」\n\n";
+				let hasil;let hasiltxt = "「 猜動漫 」\n";
 				this._download("https://obs-sg.line-apps.com/talk/m/download.nhn?oid="+vx[3]+"&tid=original","img",0,(result) => {
 					const filepath = path.resolve(result);
                     //let buffx = fs.readFileSync(filepath);
@@ -1276,7 +1276,7 @@ Link Download: "+idU.id+"\n";
 				})})
 			} else if(vx[2] == "arg3" && txt == "page3"){
 				vx[2] = "arg4";
-				let hasil;let hasiltxt = "「 猜動漫 」\n\n";
+				let hasil;let hasiltxt = "「 猜動漫 」\n";
 				this._download("https://obs-sg.line-apps.com/talk/m/download.nhn?oid="+vx[3]+"&tid=original","img",0,(result) => {
 					const filepath = path.resolve(result);
                     //let buffx = fs.readFileSync(filepath);
