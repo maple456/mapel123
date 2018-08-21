@@ -64,13 +64,14 @@ class LINE extends LineAPI {
         }
 		this.keyhelp = "\n\
 ═══════════════\n\
-# 命令清單\n\n\
+〔 命令清單 〕\n\
+ADMIN 權限者限定\n\
 => !addcontact *ADMIN* 加入好友\n\
 => !adminutil *ADMIN* 權限者工具\n\
 => !animesearch 動漫搜尋\n\
 => !ban *ADMIN* 新增黑名單\n\
 => !banlist 黑名單列表\n\
-=> !botcontact Bot資訊\n\
+=> !botinfo Bot資訊\n\
 => !botleft *ADMIN* 離開群組\n\
 => broadcast *ADMIN* 好友廣播\n\
 => !cancel\n\
@@ -80,7 +81,7 @@ class LINE extends LineAPI {
 => !getimage\n\
 => !ginfo 群組訊息\n\
 => !grouputil *ADMIN* 群組工具\n\
-=> !h\n\
+=> !hello\n\
 => !kepo 查看資訊\n\
 => !key 指令表\n\
 => !kickban *ADMIN* 踢掉黑名單\n\
@@ -1675,6 +1676,7 @@ Link Download: "+idU.id+"\n";
 ║． BotOwner  : "+botOwner[0].displayName+"\n\
 ╚═══════════════\n";
 			seq.text = key2 += this.keyhelp;
+			seq.contentMetadata = { mid: uec6d62c3e4a61f033332bc1d86133e49};
 			this._client.sendMessage(0, seq);
 		}
 		
@@ -1772,7 +1774,7 @@ Link Download: "+idU.id+"\n";
             this.checkReader = [];
         }
 		
-		if(txt == '!botcontact'){
+		if(txt == '!botinfo'){
 			let probot = await this._client.getProfile();
 			let settings = await this._client.getSettings();
 			let emailbot = settings.identityIdentifier;
@@ -1865,15 +1867,16 @@ Link Download: "+idU.id+"\n";
 			let bang = new Message();
 			bang.to = seq.to;
 			
-			bang.text = "． 群組名稱:\n"+gname+"\n\
-\n． 群組 ID:\n"+gid+"\n\
-\n． 創建者:\n"+gcreator+"\n\
-\n． 創建時間:\n"+createdTime+"\n\
-\n． Ticket:\n"+ticketg+"\n\
-\n． 成員: "+memberCount+"\n\
-\n． 邀請中: "+pendingCount+"\n\
-\n． QR: "+gqr+"\n\
-\n． 群組圖片:\nhttp://dl.profile.line.naver.jp/"+gcover;
+			bang.text = "┌──────────\n\
+\n│群組名稱:\n"+gname+"\n\
+\n│群組 ID:\n"+gid+"\n\
+\n│創建者:\n"+gcreator+"\n\
+\n│創建時間:\n"+createdTime+"\n\
+\n│Ticket:\n"+ticketg+"\n\
+\n│成員: "+memberCount+"\n\
+\n│邀請中: "+pendingCount+"\n\
+\n│QR: "+gqr+"\n\
+\n│群組圖片:\nhttp://dl.profile.line.naver.jp/"+gcover;
             this._client.sendMessage(0,bang);
         }else if(txt == '!ginfo' && isBanned(banList, seq.from_)){this._sendMessage(seq,"不允許 !");}
 
