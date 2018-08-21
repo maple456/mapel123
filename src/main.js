@@ -1676,7 +1676,6 @@ Link Download: "+idU.id+"\n";
 ║． BotOwner  : "+botOwner[0].displayName+"\n\
 ╚═══════════════\n";
 			seq.text = key2 += this.keyhelp;
-			seq.contentMetadata = { mid: uec6d62c3e4a61f033332bc1d86133e49};
 			this._client.sendMessage(0, seq);
 		}
 		
